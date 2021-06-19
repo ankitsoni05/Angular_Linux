@@ -1,0 +1,19 @@
+<mat-grid-list cols="5" rowHeight="4:4">
+
+    <div *ngFor="let item of restaurent.menu.items">
+        <mat-grid-tile>
+            <mat-card class="foodCard">
+                <mat-card-title>{{item.name}}</mat-card-title>
+                <mat-card-subtitle>{{item.category}}</mat-card-subtitle>
+                <mat-card-content>
+                    <h2>New Serving {{item.name}} with Fresh Fries</h2>
+                    <p>Hurry up only {{item.qty}} left</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <h4>Available variants</h4>
+                    <button mat-button color="primary" *ngFor="let size of item.sizes">{{size}}</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </div>
+</mat-grid-list>
