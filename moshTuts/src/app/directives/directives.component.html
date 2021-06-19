@@ -6,3 +6,48 @@
 <ng-template #nocourses> 
     No Courses available
 </ng-template>
+<!-- Pills navs -->
+<ul class="nav nav-pills mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" (click)="changeStatus('tt')" [class.active]="ActiveStatus == 'tt'" id="ex1-tab-1"
+            data-mdb-toggle="pill" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1" aria-selected="true">Total
+            Tasks</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" (click)="changeStatus('at')" [class.active]="ActiveStatus == 'at'" id="ex1-tab-2"
+            data-mdb-toggle="pill" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2"
+            aria-selected="false">Active Tasks</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" (click)="changeStatus('it')" [class.active]="ActiveStatus == 'it'" id="ex1-tab-3"
+            data-mdb-toggle="pill" href="#ex1-pills-3" role="tab" aria-controls="ex1-pills-3"
+            aria-selected="false">Inactive Tasks</a>
+    </li>
+</ul>
+<!-- Pills navs -->
+
+<!-- Pills content -->
+<div class="tab-content" id="ex1-content" [ngSwitch]="ActiveStatus">
+    <div class="tab-pane fade" [class.show]="ActiveStatus == 'tt'" [class.active]="ActiveStatus == 'tt'"
+        id="ex1-pills-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+        <h2>All Tasks</h2>
+        <ul>
+            <li *ngFor="let task of tasks.totaltasks">{{task}}</li>
+        </ul>
+    </div>
+    <div class="tab-pane fade" [class.show]="ActiveStatus == 'at'" [class.active]="ActiveStatus == 'at'"
+        id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+        <h2>Active Tasks</h2>
+        <ul>
+            <li *ngFor="let task of tasks.activetasks">{{task}}</li>
+        </ul>
+    </div>
+    <div class="tab-pane fade" [class.show]="ActiveStatus == 'it'" [class.active]="ActiveStatus == 'it'"
+        id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+        <h2>Inactive Tasks</h2>
+        <ul>
+            <li *ngFor="let task of tasks.inactivetasks">{{task}}</li>
+        </ul>
+    </div>
+</div>
+<!-- Pills content -->
