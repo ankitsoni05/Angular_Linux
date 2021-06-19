@@ -1,0 +1,8 @@
+<div *ngIf = "courses.length >0">
+    <ul>
+        <li *ngFor="let item of courses">{{item}}</li>
+    </ul>
+</div>
+<ng-template #nocourses> 
+    No Courses available
+</ng-template>
