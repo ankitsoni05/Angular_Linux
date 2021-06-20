@@ -10,14 +10,17 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
-
-
+import { InputFormatDirective } from './input-format.directive';
+import {FormsModule} from '@angular/forms';
+import { ContactFormComponent } from './contact-form/contact-form.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectivesComponent,
-    FormatComponent
+    FormatComponent,
+    InputFormatDirective,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSliderModule,
     MatCardModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
