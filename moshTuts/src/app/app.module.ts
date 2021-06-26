@@ -14,7 +14,9 @@ import { InputFormatDirective } from './input-format.directive';
 import {FormsModule} from '@angular/forms';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { TemplatevartestComponent } from './templatevartest/templatevartest.component';
-import { TemplatedrivenformComponent } from './templatedrivenform/templatedrivenform.component'
+import { TemplatedrivenformComponent } from './templatedrivenform/templatedrivenform.component';
+import { ReactiveSignupFormComponent } from './reactive-signup-form/reactive-signup-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { TemplatedrivenformComponent } from './templatedrivenform/templatedriven
     InputFormatDirective,
     ContactFormComponent,
     TemplatevartestComponent,
-    TemplatedrivenformComponent
+    TemplatedrivenformComponent,
+    ReactiveSignupFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +37,10 @@ import { TemplatedrivenformComponent } from './templatedrivenform/templatedriven
     MatCardModule,
     MatButtonModule,
     MatGridListModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
