@@ -5,3 +5,7 @@ form{
 button{
     margin-top:20px ;
 }
+
+.form-control.ng-touched.ng-dirty.ng-invalid{
+    border: 2px solid red;
+}

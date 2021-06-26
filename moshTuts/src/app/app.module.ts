@@ -12,7 +12,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { InputFormatDirective } from './input-format.directive';
 import {FormsModule} from '@angular/forms';
-import { ContactFormComponent } from './contact-form/contact-form.component'
+import { ContactFormComponent } from './contact-form/contact-form.component';
+import { TemplatevartestComponent } from './templatevartest/templatevartest.component';
+import { TemplatedrivenformComponent } from './templatedrivenform/templatedrivenform.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ContactFormComponent } from './contact-form/contact-form.component'
     DirectivesComponent,
     FormatComponent,
     InputFormatDirective,
-    ContactFormComponent
+    ContactFormComponent,
+    TemplatevartestComponent,
+    TemplatedrivenformComponent
   ],
   imports: [
     BrowserModule,
