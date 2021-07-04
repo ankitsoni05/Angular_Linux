@@ -18,6 +18,8 @@ import { TemplatedrivenformComponent } from './templatedrivenform/templatedriven
 import { ReactiveSignupFormComponent } from './reactive-signup-form/reactive-signup-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReactiveSignupForm2Component } from './reactive-signup-form2/reactive-signup-form2.component';
+import { HttpservicestutsComponent } from './httpservicestuts/httpservicestuts.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { ReactiveSignupForm2Component } from './reactive-signup-form2/reactive-s
     TemplatedrivenformComponent,
     ReactiveSignupFormComponent,
     ReactiveSignupForm2Component,
+    HttpservicestutsComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { ReactiveSignupForm2Component } from './reactive-signup-form2/reactive-s
     MatGridListModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
