@@ -17,6 +17,7 @@ import { TemplatevartestComponent } from './templatevartest/templatevartest.comp
 import { TemplatedrivenformComponent } from './templatedrivenform/templatedrivenform.component';
 import { ReactiveSignupFormComponent } from './reactive-signup-form/reactive-signup-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveSignupForm2Component } from './reactive-signup-form2/reactive-signup-form2.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TemplatevartestComponent,
     TemplatedrivenformComponent,
     ReactiveSignupFormComponent,
+    ReactiveSignupForm2Component,
   ],
   imports: [
     BrowserModule,

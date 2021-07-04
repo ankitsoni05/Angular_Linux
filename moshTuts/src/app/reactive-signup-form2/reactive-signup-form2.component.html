@@ -1,0 +1,34 @@
+<div class="container">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="text" formControlName="email" class="form-control" id="email" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Colour</label>
+            <select class="form-control" formControlName="colour" id="colour">
+                <option value="0">--Select Colour--</option>
+                <option [value]="colour.id" *ngFor="let colour of colours">{{colour.colour}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect2">Select City</label>
+            <select formControlName="city" multiple class="form-control" id="city">
+                <option [value]="city.id" *ngFor="let city of cities">{{city.ctyname}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Additional comments</label>
+            <textarea formControlName="comments" class="form-control" id="comments" rows="3"></textarea>
+            <div *ngIf="comments?.errors?.HaveLengthIssue && comments?.touched" class="alert alert-danger">Comments
+                Length must be 15 or more
+            </div>
+        </div>
+        <div class="form-group">
+            <button (click)="btnSubmit()" class="btn btn-primary">Submit Details</button>
+        </div>
+        <div class="alert alert-success" *ngIf="form?.valid">
+            <p>{{form.value | json}}</p>
+        </div>
+    </form>
+</div>
