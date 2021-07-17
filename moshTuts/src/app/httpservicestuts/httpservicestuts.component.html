@@ -1,1 +1,48 @@
-<p>httpservicestuts works!</p>
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor='let task of taskList'>{{task.taskName}}</li>
+    </ul>
+    <hr>
+    <div *ngIf="!taskList">
+        <span>Loading..</span>
+    </div>
+</div>
+<!-- taskName: new FormControl(),
+createdBy: new FormControl(),
+createdDate: new FormControl(),
+startDate: new FormControl(),
+endDate: new FormControl(),
+priority: new FormControl(), -->
+<div class="container">
+    <form class="row g-3" [formGroup]="taskForm">
+        <div class="col-12">
+            <label for="taskname" class="form-label">Task Name</label>
+            <input type="text" class="form-control" id="taskname" formControlName="taskName">
+        </div>
+        <div class="col-md-6">
+            <label for="startdate" class="form-label">Start Date</label>
+            <input type="datetime-local" class="form-control" id="startdate" formControlName="startDate">
+        </div>
+        <div class="col-md-6">
+            <label for="enddate" class="form-label">End Date</label>
+            <input type="datetime-local" class="form-control" id="enddate" formControlName="endDate">
+        </div>
+        <div class="col-md-6">
+            <label for="creator" class="form-label">Task Creator</label>
+            <select formControlName="createdBy" class="form-select" id="priority" aria-label="Default select example">
+                <option selected>Tell us who you are ?</option>
+                <option *ngFor='let c of creators' [value]="c.id">{{c.cname}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="priority" class="form-label">Task Priority</label>
+            <select formControlName="priority" class="form-select" id="priority" aria-label="Default select example">
+                <option selected>Please select Priority</option>
+                <option *ngFor='let p of priorities' [value]='p.id'>{{p.pname}}</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <button type="submit" (click)="submitTask()" class="btn btn-primary">Create Task</button>
+        </div>
+    </form>
+</div>

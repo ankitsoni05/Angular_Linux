@@ -20,6 +20,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ReactiveSignupForm2Component } from './reactive-signup-form2/reactive-signup-form2.component';
 import { HttpservicestutsComponent } from './httpservicestuts/httpservicestuts.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { CreateTaskComponent } from './create-task/create-task.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveSignupFormComponent,
     ReactiveSignupForm2Component,
     HttpservicestutsComponent,
+    CreateTaskComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +51,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
