@@ -1,18 +1,33 @@
 <div class="container">
-    <ul class="list-group">
-        <li class="list-group-item" *ngFor='let task of taskList'>{{task.taskName}}</li>
-    </ul>
-    <hr>
-    <div *ngIf="!taskList">
-        <span>Loading..</span>
-    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Sr.No</th>
+                <th scope="col">Task Name</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Created Date</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!taskList" colspan="8">Loading....!</tr>
+            <tr *ngIf="taskList.length<=0" colspan="8">Currently we have no task...</tr>
+            <tr *ngFor='let task of taskList;index as i'>
+                <td>{{i+1}}</td>
+                <td>{{task.taskName}}</td>
+                <td>{{task.createdBy}}</td>
+                <td>{{task.createdDate | date:'medium'}}</td>
+                <td>{{task.startDate | date:'medium'}}</td>
+                <td>{{task.endDate | date:'medium'}}</td>
+                <td>{{task.priority}}</td>
+                <td><i class="bi bi-trash bootdelicon" (click)="DeleteTask(task)"></i></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-<!-- taskName: new FormControl(),
-createdBy: new FormControl(),
-createdDate: new FormControl(),
-startDate: new FormControl(),
-endDate: new FormControl(),
-priority: new FormControl(), -->
 <div class="container">
     <form class="row g-3" [formGroup]="taskForm">
         <div class="col-12">

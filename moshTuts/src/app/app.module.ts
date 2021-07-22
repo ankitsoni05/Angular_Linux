@@ -24,7 +24,8 @@ import { MatTableModule } from '@angular/material/table';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { PostsService } from './services/posts.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -54,8 +55,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTableModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [PostsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

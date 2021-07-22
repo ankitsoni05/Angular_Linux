@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PostsService } from '../services/posts.service';
 
 @Component({
   selector: 'app-httpservicestuts',
@@ -24,24 +24,39 @@ export class HttpservicestutsComponent implements OnInit {
   ];
 
   taskForm = new FormGroup({
-    taskName: new FormControl(),
-    createdBy: new FormControl(),
-    startDate: new FormControl(),
-    endDate: new FormControl(),
-    priority: new FormControl(),
+    taskName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+    createdBy: new FormControl('', [Validators.required]),
+    startDate: new FormControl('', [Validators.required]),
+    endDate: new FormControl('', [Validators.required]),
+    priority: new FormControl('', [Validators.required]),
   });
-  constructor(private clientHttp: HttpClient) {}
+  constructor(private Service: PostsService) {}
 
   ngOnInit(): void {
-    this.clientHttp
-      .get('https://localhost:5001/AllTasks')
-      .subscribe((respo) => {
+    this.Service.getAllTasks().subscribe(
+      (respo) => {
         console.log(respo);
         this.taskList = respo;
-      });
+        if (this.taskList.length <= 0) {
+          this.Service.ShowSnackBar('Currently no task found', 'warning');
+        } else {
+          this.Service.ShowSnackBar('Successfully loaded all tasks', 'success');
+        }
+      },
+      (error) => {
+        if (error.status === 400) {
+          this.Service.ShowSnackBar(
+            'Something wrong happend at Server contact Admin',
+            'warning'
+          );
+        }
+      }
+    );
   }
   submitTask() {
-    console.log(this.taskForm.value);
     var payload = {
       TaskName: this.taskForm.value.taskName,
       CreatedBy: this.taskForm.value.createdBy,
@@ -50,16 +65,31 @@ export class HttpservicestutsComponent implements OnInit {
       EndDate: this.taskForm.value.endDate,
       priority: this.taskForm.value.priority,
     };
-    const headers = { 'content-type': 'application/json' };
-    console.log('Final Payload', payload);
-    this.clientHttp
-      .post('https://localhost:5001/CreateTask', JSON.stringify(payload), {
-        headers: headers,
-      })
-      .subscribe((returntask) => {
-        console.log('Task Returned', returntask);
-        console.log('Task List already', this.taskList);
-        this.taskList.splice(0, 0, returntask);
-      });
+    this.Service.createTask(payload).subscribe((returntask) => {
+      this.taskList.splice(0, 0, returntask);
+      this.Service.ShowSnackBar(
+        `Task ${this.taskForm.value.taskName} added successfully..!`,
+        'success'
+      );
+    });
+  }
+  DeleteTask(task: any) {
+    this.Service.deleteTask(task.id).subscribe(
+      (returnval) => {
+        const removeIndex = this.taskList.findIndex(
+          (item: any) => item.id === task.id
+        );
+        this.taskList.splice(removeIndex, 1);
+        this.Service.ShowSnackBar(`Task ${task.taskName} removed..!`, 'danger');
+      },
+      (error) => {
+        if (error.status === 404) {
+          this.Service.ShowSnackBar(
+            `Seems Like task ${task.taskName} is already deleted`,
+            'danger'
+          );
+        }
+      }
+    );
   }
 }
